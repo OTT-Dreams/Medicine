@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #556cd6;
+            padding: 10px;
+            color: white;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            background-color: #556cd6;
+            color: white;
+            border-radius: 5px;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Book Management System</h1>
+
+    <nav>
+        <button onclick="showSection('library')">Library</button>
+        <button onclick="showSection('sell')">Sell</button>
+        <button onclick="showSection('distribute')">Distribute</button>
+    </nav>
+
+    <!-- Library Section -->
+    <section id="library">
+        <h2>Library</h2>
+        <input type="text" placeholder="Search Book...">
+        <br>
+        <input type="text" placeholder="Add Book Title">
+        <input type="text" placeholder="Author">
+        <button>Add Book</button>
+
+        <h3>Book List</h3>
+        <ul id="book-list">
+            <li>Example Book 1</li>
+            <li>Example Book 2</li>
+        </ul>
+    </section>
+
+    <!-- Sell Section -->
+    <section id="sell" class="hidden">
+        <h2>Sell</h2>
+        <input type="text" placeholder="Book Title Sold">
+        <input type="date">
+        <input type="number" placeholder="Price">
+        <button>Record Sale</button>
+
+        <h3>Sales History</h3>
+        <ul id="sales-list">
+            <li>Example Sale 1</li>
+        </ul>
+    </section>
+
+    <!-- Distribute Section -->
+    <section id="distribute" class="hidden">
+        <h2>Distribute</h2>
+        <button onclick="showSubSection('in')">IN</button>
+        <button onclick="showSubSection('out')">OUT</button>
+
+        <div id="distribute-in" class="hidden">
+            <h3>IN Section</h3>
+            <input type="text" placeholder="Book Title IN">
+            <input type="date">
+            <button>Add Distribution In</button>
+
+            <ul id="distribution-in-list">
+                <li>Example In Record</li>
+            </ul>
+        </div>
+
+        <div id="distribute-out" class="hidden">
+            <h3>OUT Section</h3>
+            <input type="text" placeholder="Book Title OUT">
+            <input type="date">
+            <button>Add Distribution Out</button>
+
+            <ul id="distribution-out-list">
+                <li>Example Out Record</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('library').classList.add('hidden');
+            document.getElementById('sell').classList.add('hidden');
+            document.getElementById('distribute').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function showSubSection(subId) {
+            document.getElementById('distribute-in').classList.add('hidden');
+            document.getElementById('distribute-out').classList.add('hidden');
+            document.getElementById('distribute-' + subId).classList.remove('hidden');
+        }
+    </script>
+
+</body>
+
+</html>
